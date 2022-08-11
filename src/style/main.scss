@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@500&family=Poppins&display=swap');
 
-$transparent-white: #fefefeaa;
+$transparent-white: linear-gradient(45deg, #fffa, #eeea, #fffa);
 
 * {
   margin: 0;
@@ -16,11 +16,20 @@ html {
 body {
   height: 100vh;
   overflow-x: hidden;
-  background-color: #17609b;
+  background: url('../assets/cloud-bg.jpg') #17609b;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 button {
   cursor: pointer;
+}
+
+.blur-bg {
+  backdrop-filter: blur(2px);
+  box-shadow: 2px 2px 5px -2px #222;
 }
 
 nav {
@@ -33,9 +42,9 @@ nav {
 
   h1 {
     font-size: 1.3rem;
-    background-color: $transparent-white;
+    background: $transparent-white;
     border-radius: 999px;
-    padding: 5px 10px;
+    padding: 5px 15px;
     color: #222;
 
     sub {
@@ -48,7 +57,7 @@ nav {
 
     input,
     button {
-      background-color: $transparent-white;
+      background: $transparent-white;
       border: 0;
     }
 
@@ -56,7 +65,7 @@ nav {
       padding: 5px 10px;
       font-size: 1.2rem;
       border-radius: 999px;
-      margin-right: 10px;
+      margin-right: 5px;
 
       &::placeholder {
         color: #222;
@@ -80,14 +89,14 @@ main {
   min-height: 80%;
 
   > h1 {
-    color: #fffd;
+    color: #fff;
     text-shadow: 2px 2px #000;
     font-size: 2.2rem;
   }
 }
 
 #app {
-  width: 50%;
+  width: max(600px, 50%);
   height: 400px;
   background: $transparent-white;
   padding: 16px;
@@ -132,11 +141,78 @@ main {
     i {
       font-size: 2rem;
       margin-right: 20px;
+      text-align: center;
     }
 
     p {
       font-size: 1.2rem;
       font-weight: bold;
+    }
+  }
+}
+
+#credits {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+
+    form {
+      width: 70%;
+      display: flex;
+
+      input {
+        flex: 90%;
+      }
+    }
+
+    h1 {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  main {
+    height: auto;
+  }
+
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: auto;
+    gap: 32px;
+    padding: 32px 0;
+    width: 90%;
+
+    .weather {
+      border-right: 0;
+    }
+
+    .stats {
+      grid-column: 1;
+      grid-row: 2;
+      flex-direction: row;
+      gap: 0;
+
+      p {
+        flex: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        i {
+          margin-right: 0;
+        }
+      }
     }
   }
 }
