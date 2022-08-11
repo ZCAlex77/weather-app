@@ -8,17 +8,21 @@ const weather = (() => {
   let unit = 'metric';
 
   const getWeatherData = async (coords) => {
-    const response = await fetch(
-      `${weatherUrl}?lat=${coords.lat}&lon=${coords.lon}&units=${unit}&appid=${apiKey}`
-    );
-    const data = await response.json();
-    console.log(data);
-    const temp = data.main.temp;
-    const icon = data.weather[0].icon;
-    const description = data.weather[0].description;
-    const image = `${imageUrl}${icon}@4x.png`;
+    try {
+      const response = await fetch(
+        `${weatherUrl}?lat=${coords.lat}&lon=${coords.lon}&units=${unit}&appid=${apiKey}`
+      );
+      const data = await response.json();
+      console.log(data);
+      const temp = data.main.temp;
+      const icon = data.weather[0].icon;
+      const description = data.weather[0].description;
+      const image = `${imageUrl}${icon}@4x.png`;
 
-    UI.createWeatherCard(temp, image, description);
+      UI.createWeatherCard(temp, image, description);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const getCoords = async (city) => {
@@ -26,6 +30,9 @@ const weather = (() => {
       const response = await fetch(`${geocodinUrl}?q=${city}&appid=${apiKey}`);
       const data = await response.json();
       const coords = { lat: data[0].lat, lon: data[0].lon };
+      const name = data[0].name;
+
+      UI.updateLocation(name);
 
       getWeatherData(coords);
     } catch (err) {
@@ -33,7 +40,11 @@ const weather = (() => {
     }
   };
 
-  return { getCoords };
+  const getWeather = (city) => {
+    getCoords(city);
+  };
+
+  return { getWeather };
 })();
 
 export default weather;

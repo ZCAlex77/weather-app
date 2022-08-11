@@ -74,7 +74,15 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 10px;
   min-height: 80%;
+
+  > h1 {
+    color: #fffd;
+    text-shadow: 2px 2px #000;
+    font-size: 2.2rem;
+  }
 }
 
 #app {
@@ -88,8 +96,13 @@ main {
 
   .card {
     align-self: center;
-    justify-self: center;
+    justify-self: stretch;
     border-right: 1px solid #222;
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
 
     p {
       text-align: center;

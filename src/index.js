@@ -2,6 +2,12 @@ import './style/main.scss';
 import weather from './modules/weather';
 
 const app = (() => {
-  const container = document.querySelector('#app');
-  weather.getCoords('Iasi');
+  document.querySelector('#searchCity').onsubmit = function (ev) {
+    ev.preventDefault();
+    const city = this.city.value;
+    weather.getWeather(city);
+    this.reset();
+  };
+
+  weather.getWeather('Iasi');
 })();
