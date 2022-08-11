@@ -1,7 +1,7 @@
 import './style/main.scss';
+import weather from './modules/weather';
 
 const app = (() => {
   const container = document.querySelector('#app');
-
-  container.textContent = 'Hello world';
+  weather.getCoords('Iasi');
 })();
