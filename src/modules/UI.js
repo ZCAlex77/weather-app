@@ -1,5 +1,6 @@
 const UI = (() => {
   const container = document.querySelector('#app');
+  const iconUrl = ' http://openweathermap.org/img/wn/';
 
   const updateLocation = (newLocation) => {
     document.querySelector(
@@ -7,21 +8,20 @@ const UI = (() => {
     ).textContent = `Weather in ${newLocation}`;
   };
 
-  const createWeatherCard = (temp, imgUrl, description) => {
-    const card = document.createElement('div'),
-      img = document.createElement('img'),
-      p = document.createElement('p'),
-      p2 = document.createElement('p');
-
-    img.src = imgUrl;
-    p.innerHTML = `${temp} <sup>o</sup>C`;
-    p2.textContent = description;
-
-    card.className = 'card';
-    card.append(img, p, p2);
-
-    document.querySelector('.card')?.remove();
-    container.appendChild(card);
+  const createWeatherCard = ({
+    temp,
+    icon,
+    description,
+    humidity,
+    clouds,
+    windSpeed,
+  }) => {
+    document.querySelector('#icon').src = `${iconUrl}${icon}@4x.png`;
+    document.querySelector('#temp').textContent = temp;
+    document.querySelector('#description').textContent = description;
+    document.querySelector('#humidity').textContent = `${humidity}%`;
+    document.querySelector('#clouds').textContent = `${clouds}%`;
+    document.querySelector('#wind').textContent = `${windSpeed} km/h`;
   };
 
   return { createWeatherCard, updateLocation };
