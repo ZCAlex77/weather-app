@@ -7,18 +7,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
   <script src="https://kit.fontawesome.com/8e2dfaafb5.js" crossorigin="anonymous"></script>
-<script defer src="bundle.dba33774467ccf7c1f29.js"></script></head>
+<script defer src="bundle.78424ce0e4ed9315294b.js"></script></head>
 
 <body>
   <nav>
-    <form>
-      <input type="text" name="city" id="city" placeholder="Enter city name" required>
-      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <h1 class="blur-bg">
+      Weather App <sub>by Alexandru Zmău</sub>
+    </h1>
+    <form id="searchCity">
+      <input class="blur-bg" type="text" name="city" id="city" placeholder="Enter city name..." required>
+      <button class="blur-bg" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
   </nav>
   <main>
-    <div id="app"></div>
+    <h1 id="cityName">Iaşi</h1>
+    <div id="app" class="blur-bg">
+      <div class="weather">
+        <img id="icon" src="" />
+        <p><span id="temp"></span> <sup>o</sup>C</p>
+        <p id="description"></p>
+      </div>
+      <div class="stats">
+        <p><i class="fa-solid fa-droplet"></i><span id="humidity"></span></p>
+        <p><i class="fa-solid fa-cloud"></i><span id="clouds"></span></p>
+        <p><i class="fa-solid fa-wind"></i><span id="wind"></span></p>
+      </div>
+    </div>
   </main>
+  <p id="credits">Photo by <a
+      href="https://unsplash.com/@billy_huy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Billy
+      Huynh</a> on <a
+      href="https://unsplash.com/s/photos/clouds?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </p>
 </body>
 
 </html>
