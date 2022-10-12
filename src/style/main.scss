@@ -35,16 +35,15 @@ button {
 nav {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   padding: 16px;
   height: 10%;
+  background: $transparent-white;
 
   h1 {
     font-size: 1.3rem;
-    background: $transparent-white;
     border-radius: 999px;
-    padding: 5px 15px;
     color: #222;
 
     sub {
@@ -54,18 +53,24 @@ nav {
 
   form {
     color: #222;
+    background: #fff;
+    border: 1px solid #777;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
 
     input,
     button {
-      background: $transparent-white;
       border: 0;
     }
 
     input {
-      padding: 5px 10px;
       font-size: 1.2rem;
-      border-radius: 999px;
       margin-right: 5px;
+
+      &:focus {
+        outline: none;
+      }
 
       &::placeholder {
         color: #222;
@@ -73,9 +78,9 @@ nav {
     }
 
     button {
-      height: calc(1.2rem + 10px);
-      aspect-ratio: 1/1;
-      border-radius: 50%;
+      height: 100%;
+      width: 40px;
+      padding: 2px 0;
     }
   }
 }
